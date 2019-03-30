@@ -51,6 +51,11 @@ public class Notepad extends javax.swing.JFrame {
         jMenu1.add(mniAbrir);
 
         mniGuardar.setText("Guardar");
+        mniGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniGuardarActionPerformed(evt);
+            }
+        });
         jMenu1.add(mniGuardar);
 
         jMenuBar1.add(jMenu1);
@@ -115,6 +120,16 @@ public class Notepad extends javax.swing.JFrame {
         FileText fileText=new FileText(file);
         txaTexto.setText(fileText.getText());
     }//GEN-LAST:event_mniAbrirActionPerformed
+
+    private void mniGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniGuardarActionPerformed
+        // Evento Guardar
+        JFileChooser fc=new JFileChooser();
+        fc.showSaveDialog(this);
+        File file=fc.getSelectedFile();
+        if(file==null) return;
+        FileText fileText=new FileText(file);
+        fileText.setText(txaTexto.getText());
+    }//GEN-LAST:event_mniGuardarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
